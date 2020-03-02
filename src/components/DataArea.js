@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import DataTable from "./DataTable";
 import Nav from "./Nav";
 import API from "../utils/API";
+// import UserData from "../json/userData.json";
 import "../styles/DataArea.css";
 
 export default class DataArea extends Component {
   state = {
     users: [{}],
     order: "descend",
-    filteredUsers: [{}]
+    filteredUsers: []
   }
 
   headings = [
@@ -78,10 +79,11 @@ export default class DataArea extends Component {
   }
 
   componentDidMount() {
-    API.getUsers().then(results => {
+    API.getUsers().then(user => {
+      console.log("didmount  ", user)
       this.setState({
-        users: results.data.results,
-        filteredUsers: results.data.results
+        users: user.data.results,
+        filteredUsers: user.data.results
       });
     });
   }

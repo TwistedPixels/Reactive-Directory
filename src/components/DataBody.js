@@ -12,9 +12,10 @@ function DataBody({ users }) {
     return formattedDate;
   }
 
+  console.log("adtabody " , users)
   return (
     <tbody>
-      {users[0] !== undefined && users[0].name !== undefined ? (
+      { users !== undefined ? (
         users.map(({ login, name, picture, phone, email, dob }) => {
           return (
             <tr key={login.uuid}>
